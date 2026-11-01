@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create account - ShopHub</title>
+    <link rel="icon" href="/images/icon.png">
+    <link rel="stylesheet" href="/css/editorial.css">
+</head>
+<body>
+<main class="register-shell">
+    <div class="login-brand">ShopHub · thoughtful everyday goods</div>
+    <h1>Create an account</h1>
+    <p class="register-intro">A home for your cart and saved pieces.</p>
+
+    <form class="editorial-form" method="post" th:action="@{/register}" th:object="${registration}">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="firstName">First name</label>
+                <input id="firstName" class="form-control" th:field="*{firstName}" autocomplete="given-name"
+                       required maxlength="100">
+                <small class="field-error" th:errors="*{firstName}"></small>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input id="lastName" class="form-control" th:field="*{lastName}" autocomplete="family-name"
+                       required maxlength="100">
+                <small class="field-error" th:errors="*{lastName}"></small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" class="form-control" th:field="*{username}" autocomplete="username"
+                   required minlength="3" maxlength="50">
+            <small class="field-error" th:errors="*{username}"></small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" class="form-control" th:field="*{email}" autocomplete="email"
+                   required maxlength="255">
+            <small class="field-error" th:errors="*{email}"></small>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" class="form-control" th:field="*{password}"
+                   autocomplete="new-password" required minlength="8" maxlength="72">
+            <small class="field-error" th:errors="*{password}"></small>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword" type="password" class="form-control" th:field="*{confirmPassword}"
+                   autocomplete="new-password" required>
+            <small class="field-error" th:errors="*{confirmPassword}"></small>
+        </div>
+        <button class="editorial-primary" type="submit">Create account</button>
+    </form>
+
+    <p class="editorial-auth-link">Already registered? <a th:href="@{/login}">Sign in</a></p>
+</main>
+</body>
+</html>

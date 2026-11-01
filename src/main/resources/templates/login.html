@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in - ShopHub</title>
+    <link rel="icon" href="/images/icon.png">
+    <link rel="stylesheet" href="/css/editorial.css">
+</head>
+<body>
+<main class="login-shell">
+    <div class="login-brand">ShopHub · thoughtful everyday goods</div>
+    <h1>Sign in</h1>
+    <p class="login-intro">Sign in to continue to your collection.</p>
+
+    <div class="editorial-alert" role="alert" th:if="${param.error}">
+        The username or password was not recognized. Please try again.
+    </div>
+    <div class="editorial-alert" role="status" th:if="${param.logout}">
+        You have been signed out.
+    </div>
+    <div class="editorial-alert" role="status" th:if="${param.registered}">
+        Your account is ready. Sign in to continue.
+    </div>
+
+    <form class="editorial-form" method="post" th:action="@{/perform_login}">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" name="username" class="form-control" type="text"
+                   autocomplete="username" required autofocus>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" class="form-control" type="password"
+                   autocomplete="current-password" required>
+        </div>
+        <button class="editorial-primary" type="submit">Sign in</button>
+    </form>
+
+    <p class="editorial-auth-link">New to ShopHub? <a th:href="@{/register}">Create an account</a></p>
+</main>
+</body>
+</html>
